@@ -13,7 +13,7 @@ class CoinRepositoryImpl implements CoinRepository{
   @override
   Future<List<CurrencyModel>> getCurrencies() async {
     List<CurrencyModel> list = new List();
-     _api.fetchCurrency().then((value) => {
+    await _api.fetchCurrency().then((value) => {
         value.data.forEach((element) {
           list.add(_mapper.map(element));
         })

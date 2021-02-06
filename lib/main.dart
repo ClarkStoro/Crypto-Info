@@ -64,10 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   CoinRepository _repo = new CoinRepositoryImpl();
 
-  void _fetchCurrency() async{
-    List<CurrencyModel> res = await _repo.getCurrencies();
-    _currencies = res;
-
+  void _fetchCurrency() async {
+    await _repo.getCurrencies().then((value) => {
+      setState(() {
+        _currencies = value;
+      })
+    });
   }
 
 
