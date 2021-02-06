@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Crypto Info',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Crypto Info Home'),
     );
   }
 }
@@ -71,28 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
       })
     });
   }
-
-
-  // Future<CoinCapResponse> _fetchCurrency() async {
-  //   final response = await http.get('https://api.coincap.io/v2/assets/');
-  //   if (response.statusCode == 200) {
-  //     // If the server did return a 200 OK response,
-  //     // then parse the JSON.
-  //     log(response.body);
-  //     CoinCapResponse res = CoinCapResponse.fromJson(response.body);
-  //     setState(() {
-  //         _name = res.data[0].name;
-  //
-  //         _currencies = res.data;
-  //     });
-  //     return res;
-  //
-  //   } else {
-  //     // If the server did not return a 200 OK response,
-  //     // then throw an exception.
-  //     throw Exception('Failed to load album');
-  //   }
-  // }
 
 
   @override
