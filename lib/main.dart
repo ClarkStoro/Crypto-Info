@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: _currencies.length,
         itemBuilder: (context, index) {
             return Container(
-              margin: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+              margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
               decoration: BoxDecoration(
                   color: Colors.lightBlue[100],
                   border: Border.all(
@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child: ListTile(
                   leading: CircleAvatar(
-                    backgroundImage: NetworkImage("https://static.coincap.io/assets/icons/eth@2x.png")
+                    backgroundImage: NetworkImage("${_currencies[index].uriImg}")
                   ),
                   title: Text("${_currencies[index].symbol} - ${_currencies[index].name}"),
                   subtitle: Text("\$ ${_currencies[index].priceUsd} - ${_currencies[index].changePercent24Hr}"),
