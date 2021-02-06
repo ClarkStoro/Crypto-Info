@@ -1,10 +1,10 @@
 import 'dart:developer';
 
+import 'package:crypto_info/data/CoinRepositoryImpl.dart';
+import 'package:crypto_info/domain/CoinRepository.dart';
+import 'package:crypto_info/model/CurrencyModel.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'dto/CoinCapResponse.dart';
-import 'dto/Currency.dart';
+import 'data/dto/Currency.dart';
 
 
 void main() {
@@ -13,6 +13,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,28 +61,38 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   String _name;
-  List<Currency> _currencies = List.empty();
+  List<CurrencyModel> _currencies = List.empty();
 
-  Future<CoinCapResponse> _fetchCurrency() async {
-    final response = await http.get('https://api.coincap.io/v2/assets/');
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      log(response.body);
-      CoinCapResponse res = CoinCapResponse.fromJson(response.body);
-      setState(() {
-          _name = res.data[0].name;
 
-          _currencies = res.data;
-      });
-      return res;
+  CoinRepository _repo = new CoinRepositoryImpl();
 
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load album');
-    }
+  void _fetchCurrency() async{
+    List<CurrencyModel> res = await _repo.getCurrencies();
+    _currencies = res;
+
   }
+
+
+  // Future<CoinCapResponse> _fetchCurrency() async {
+  //   final response = await http.get('https://api.coincap.io/v2/assets/');
+  //   if (response.statusCode == 200) {
+  //     // If the server did return a 200 OK response,
+  //     // then parse the JSON.
+  //     log(response.body);
+  //     CoinCapResponse res = CoinCapResponse.fromJson(response.body);
+  //     setState(() {
+  //         _name = res.data[0].name;
+  //
+  //         _currencies = res.data;
+  //     });
+  //     return res;
+  //
+  //   } else {
+  //     // If the server did not return a 200 OK response,
+  //     // then throw an exception.
+  //     throw Exception('Failed to load album');
+  //   }
+  // }
 
 
   @override

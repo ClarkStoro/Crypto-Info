@@ -3,7 +3,8 @@
 //     final apiResponse = apiResponseFromMap(jsonString);
 
 import 'dart:convert';
-import 'package:crypto_info/dto/Currency.dart';
+
+import 'Currency.dart';
 
 class CoinCapResponse {
   CoinCapResponse({
