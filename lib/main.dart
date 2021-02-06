@@ -1,4 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'dto/CoinCapResponse.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -51,6 +57,26 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String _name;
+
+  Future<CoinCapResponse> _fetchCurrency() async {
+    final response = await http.get('https://api.coincap.io/v2/assets/');
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      log(response.body);
+      CoinCapResponse res = CoinCapResponse.fromJson(response.body);
+      setState(() {
+          _name = res.data[0].name;
+      });
+      return res;
+
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
+    }
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -101,14 +127,14 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              '$_name',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _fetchCurrency,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
