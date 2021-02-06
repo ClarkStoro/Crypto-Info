@@ -1,2 +1,2 @@
 # Crypto-Info
-Cryptocurrency project to study Flutter!
+Cryptocurrency project on Flutter just for fun and learning something new!
