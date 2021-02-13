@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:crypto_info/domain/GetCurrenciesUseCase.dart';
-import 'package:crypto_info/presentation/CurrencyUi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +24,7 @@ class _HomeState extends State<Home> {
 
   GetCurrenciesUseCase _getCurrenciesUseCase = new GetCurrenciesUseCase();
 
-  Future<List<CurrencyUi>> _fetchCurrency() async {
+  Future _fetchCurrency() async {
     return _getCurrenciesUseCase.execute();
   }
 

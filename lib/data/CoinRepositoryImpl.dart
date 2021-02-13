@@ -1,5 +1,4 @@
-import 'dart:math';
-
+import 'dart:async';
 import 'package:crypto_info/data/ApiCoin.dart';
 import 'package:crypto_info/domain/CoinRepository.dart';
 import 'package:crypto_info/model/CurrencyModel.dart';
@@ -10,13 +9,12 @@ class CoinRepositoryImpl implements CoinRepository{
   ModelMapper _mapper = new ModelMapper();
 
   @override
-  Future<List<CurrencyModel>> getCurrencies() async {
-    List<CurrencyModel> list = new List();
-    await _api.fetchCurrency().then((value) => {
-        value.data.forEach((element) {
-          list.add(_mapper.map(element));
-        })
-     });
-     return list;
+  Future<List<CurrencyModel>> getCurrencies() {
+    return _api.fetchCurrency().then((response) {
+      var products = response.data
+          .map((e) => _mapper.map(e))
+          .toList();
+      return products;
+    });
   }
 }

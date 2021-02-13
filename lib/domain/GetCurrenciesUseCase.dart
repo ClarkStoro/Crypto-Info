@@ -8,13 +8,12 @@ class GetCurrenciesUseCase{
   CoinRepository _repo = CoinRepositoryImpl();
 
 
-  Future<List<CurrencyUi>> execute() async{
-      List<CurrencyUi> list = new List();
-      await _repo.getCurrencies().then((value) => {
-        value.forEach((element) {
-          list.add(_mapper.map(element));
-        })
+  Future<List<CurrencyUi>> execute() {
+      return _repo.getCurrencies().then((response) {
+        var products = response
+            .map((e) => _mapper.map(e))
+            .toList();
+        return products;
       });
-      return list;
     }
 }
