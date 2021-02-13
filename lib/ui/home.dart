@@ -25,17 +25,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List<CurrencyUi> _currencies = List.empty();
+  GetCurrenciesUseCase _getCurrenciesUseCase = new GetCurrenciesUseCase();
 
-
-  GetCurrenciesUseCase _repo = new GetCurrenciesUseCase();
-
-  void _fetchCurrency() async {
-    await _repo.execute().then((value) => {
-      setState(() {
-        _currencies = value;
-      })
-    });
+  Future<List<CurrencyUi>> _fetchCurrency() async {
+    return _getCurrenciesUseCase.execute();
   }
 
 
@@ -48,34 +41,39 @@ class _HomeState extends State<Home> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: ListView.builder(
-        itemCount: _currencies.length,
-        itemBuilder: (context, index) {
-          return Container(
-            margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-            decoration: BoxDecoration(
-                color: Colors.lightBlue[100],
-                border: Border.all(
-                  color: Colors.blue,
+      body: FutureBuilder(
+        future: _fetchCurrency(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) return Center(child: Text("ERROR: ${snapshot.error}")); //throw snapshot.error;
+          if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+          var userData = snapshot.data;
+          return userData.isEmpty ? Center(
+              child: Text("NOPP")
+          ) : ListView.builder(
+            itemCount: userData.length,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                decoration: BoxDecoration(
+                    color: Colors.lightBlue[100],
+                    border: Border.all(
+                      color: Colors.blue,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(16))
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(16))
-            ),
-            child: ListTile(
-              leading: CircleAvatar(
-                  backgroundImage: NetworkImage("${_currencies[index].uriImg}")
-              ),
-              title: Text("${_currencies[index].symbol} - ${_currencies[index].name}"),
-              subtitle: Text("\$ ${_currencies[index].priceUsd} - ${_currencies[index].changePercent24Hr}"),
-              onTap: () => {},
-            ),
+                child: ListTile(
+                  leading: CircleAvatar(
+                      backgroundImage: NetworkImage("${userData[index].uriImg}")
+                  ),
+                  title: Text("${userData[index].symbol} - ${userData[index].name}"),
+                  subtitle: Text("\$ ${userData[index].priceUsd} - ${userData[index].changePercent24Hr}"),
+                  onTap: () => {},
+                ),
+              );
+            },
           );
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _fetchCurrency,
-        tooltip: 'Get data',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      )
     );
   }
 }
