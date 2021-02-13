@@ -1,9 +1,6 @@
 import 'dart:developer';
 
-import 'package:crypto_info/data/CoinRepositoryImpl.dart';
-import 'package:crypto_info/domain/CoinRepository.dart';
 import 'package:crypto_info/domain/GetCurrenciesUseCase.dart';
-import 'package:crypto_info/model/CurrencyModel.dart';
 import 'package:crypto_info/presentation/CurrencyUi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
