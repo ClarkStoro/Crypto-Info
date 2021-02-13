@@ -9,7 +9,6 @@ class ApiCoin{
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      log(response.body);
       CoinCapResponse res = CoinCapResponse.fromJson(response.body);
       return res;
 

@@ -7,7 +7,6 @@ import 'package:crypto_info/model/CurrencyModel.dart';
 
 class ModelMapper implements Mapper<Currency,CurrencyModel>{
 
-
   @override
   CurrencyModel map(Currency data) {
     return new CurrencyModel(

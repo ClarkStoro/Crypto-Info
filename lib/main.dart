@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:crypto_info/data/CoinRepositoryImpl.dart';
 import 'package:crypto_info/domain/CoinRepository.dart';
+import 'package:crypto_info/domain/GetCurrenciesUseCase.dart';
 import 'package:crypto_info/model/CurrencyModel.dart';
+import 'package:crypto_info/presentation/CurrencyUi.dart';
 import 'package:flutter/material.dart';
 import 'data/dto/Currency.dart';
 
@@ -59,13 +61,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   String _name;
-  List<CurrencyModel> _currencies = List.empty();
+  List<CurrencyUi> _currencies = List.empty();
 
 
-  CoinRepository _repo = new CoinRepositoryImpl();
+  GetCurrenciesUseCase _repo = new GetCurrenciesUseCase();
 
   void _fetchCurrency() async {
-    await _repo.getCurrencies().then((value) => {
+    await _repo.execute().then((value) => {
       setState(() {
         _currencies = value;
       })

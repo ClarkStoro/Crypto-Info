@@ -6,7 +6,6 @@ import 'package:crypto_info/model/CurrencyModel.dart';
 import 'package:crypto_info/model/ModelMapper.dart';
 
 class CoinRepositoryImpl implements CoinRepository{
-
   ApiCoin _api = new ApiCoin();
   ModelMapper _mapper = new ModelMapper();
 
