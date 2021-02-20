@@ -1,8 +1,10 @@
+import 'package:crypto_info/domain/ApiCoin.dart';
 import 'package:http/http.dart' as http;
 import 'dto/CoinCapResponse.dart';
 
-class ApiCoin{
+class ApiCoinImpl implements ApiCoin {
 
+  @override
   Future<CoinCapResponse> fetchCurrency() async {
     final response = await http.get('https://api.coincap.io/v2/assets/');
 

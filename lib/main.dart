@@ -1,10 +1,10 @@
-import 'dart:developer';
-
 import 'package:crypto_info/ui/home.dart';
 import 'package:flutter/material.dart';
+import 'service_locator.dart';
 
 
-void main() {
+void main() async {
+  await init();
   runApp(CryptoInfo());
 }
 

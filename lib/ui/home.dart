@@ -1,9 +1,11 @@
-import 'package:crypto_info/domain/GetCurrenciesUseCase.dart';
+import 'package:crypto_info/ui/HomeViewModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:crypto_info/service_locator.dart';
 
 class Home extends StatefulWidget {
-  Home({Key key, this.title}) : super(key: key);
+
+  const Home({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -22,12 +24,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  GetCurrenciesUseCase _getCurrenciesUseCase = new GetCurrenciesUseCase();
-
   Future _fetchCurrency() async {
-    return _getCurrenciesUseCase.execute();
+    return sl<HomeViewModel>().getCurrencies();
   }
-
 
   @override
   Widget build(BuildContext context) {
