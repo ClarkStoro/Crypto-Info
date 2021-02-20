@@ -14,7 +14,7 @@ class Currency {
     this.maxSupply,
     this.marketCapUsd,
     this.volumeUsd24Hr,
-    this.priceUsd,
+    this.price,
     this.changePercent24Hr,
     this.vwap24Hr,
     this.explorer,
@@ -28,8 +28,8 @@ class Currency {
   String maxSupply;
   String marketCapUsd;
   String volumeUsd24Hr;
-  String priceUsd;
-  String changePercent24Hr;
+  double price;
+  double changePercent24Hr;
   String vwap24Hr;
   String explorer;
 
@@ -43,11 +43,11 @@ class Currency {
     symbol: json["symbol"],
     name: json["name"],
     supply: json["supply"],
-    maxSupply: json["maxSupply"],
+    maxSupply:  json["maxSupply"],
     marketCapUsd: json["marketCapUsd"],
     volumeUsd24Hr: json["volumeUsd24Hr"],
-    priceUsd: json["priceUsd"],
-    changePercent24Hr: json["changePercent24Hr"],
+    price: double.parse(json["priceUsd"].toString().substring(1)),
+    changePercent24Hr: double.parse(json["changePercent24Hr"]),
     vwap24Hr: json["vwap24Hr"],
     explorer: json["explorer"],
   );
@@ -61,7 +61,7 @@ class Currency {
     "maxSupply": maxSupply,
     "marketCapUsd": marketCapUsd,
     "volumeUsd24Hr": volumeUsd24Hr,
-    "priceUsd": priceUsd,
+    "priceUsd": price,
     "changePercent24Hr": changePercent24Hr,
     "vwap24Hr": vwap24Hr,
     "explorer": explorer,

@@ -63,7 +63,7 @@ class _HomeState extends State<Home> {
                       backgroundImage: NetworkImage("${userData[index].uriImg}")
                   ),
                   title: Text("${userData[index].symbol} - ${userData[index].name}"),
-                  subtitle: Text("\$ ${userData[index].priceUsd} - ${userData[index].changePercent24Hr}"),
+                  subtitle: Text("\$ ${userData[index].price} | ${userData[index].changePercent24Hr}"),
                   onTap: () => {},
                 ),
               );

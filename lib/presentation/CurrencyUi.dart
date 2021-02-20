@@ -8,7 +8,7 @@ class CurrencyUi {
       this.maxSupply,
       this.marketCapUsd,
       this.volumeUsd24Hr,
-      this.priceUsd,
+      this.price,
       this.changePercent24Hr,
       this.vwap24Hr,
       this.explorer,
@@ -22,7 +22,7 @@ class CurrencyUi {
   String maxSupply;
   String marketCapUsd;
   String volumeUsd24Hr;
-  String priceUsd;
+  String price;
   String changePercent24Hr;
   String vwap24Hr;
   String explorer;

@@ -6,8 +6,19 @@ import 'package:crypto_info/presentation/CurrencyUi.dart';
 class UiMapper extends Mapper<CurrencyModel,CurrencyUi>{
   @override
   CurrencyUi map(CurrencyModel data) {
-    return new CurrencyUi(data.id, data.rank, data.symbol, data.name, data.supply, data.maxSupply, data.marketCapUsd, data.volumeUsd24Hr,
-        data.priceUsd, data.changePercent24Hr, data.vwap24Hr, data.explorer, data.uriImg);
+    return new CurrencyUi(data.id,
+        data.rank,
+        data.symbol,
+        data.name,
+        data.supply,
+        data.maxSupply,
+        data.marketCapUsd,
+        data.volumeUsd24Hr,
+        data.price.toStringAsFixed(2),
+        data.changePercent24Hr.toStringAsFixed(2)+"%",
+        data.vwap24Hr,
+        data.explorer,
+        data.uriImg
+    );
   }
-
 }

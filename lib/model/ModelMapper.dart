@@ -18,7 +18,7 @@ class ModelMapper implements Mapper<Currency,CurrencyModel>{
       data.maxSupply,
       data.marketCapUsd,
       data.volumeUsd24Hr,
-      data.priceUsd,
+      data.price,
       data.changePercent24Hr,
       data.vwap24Hr,
       data.explorer,
