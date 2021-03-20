@@ -14,7 +14,7 @@ class HomeViewModel extends ChangeNotifier {
 
   final List<CurrencyUi> _items = [];
 
-  /// An unmodifiable view of the items in the cart.
+  /// An unmodifiable view of the items
   UnmodifiableListView<CurrencyUi> get items => UnmodifiableListView(_items);
 
 
