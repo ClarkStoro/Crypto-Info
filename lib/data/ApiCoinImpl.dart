@@ -8,6 +8,8 @@ class ApiCoinImpl implements ApiCoin {
   Future<CoinCapResponse> fetchCurrency() async {
     final response = await http.get('https://api.coincap.io/v2/assets/');
 
+    //throw Exception('My test exception!');
+
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.

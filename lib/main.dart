@@ -19,7 +19,7 @@ class CryptoInfo extends StatelessWidget {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(title: 'Crypto Info Home'),
+      home: HomePage(),
     );
   }
 }
