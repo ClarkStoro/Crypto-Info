@@ -49,6 +49,7 @@ class _HomeState extends State<Home> {
           ) : ListView.builder(
             itemCount: userData.length,
             itemBuilder: (context, index) {
+              CurrencyUi data = userData[index];
               return Container(
                 margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                 decoration: BoxDecoration(
@@ -63,8 +64,8 @@ class _HomeState extends State<Home> {
                       backgroundImage: NetworkImage("${userData[index].uriImg}"),
                     backgroundColor: Colors.lightBlue[100],
                   ),
-                  title: Text("${userData[index].symbol} - ${userData[index].name}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
-                  subtitle: Text("\$ ${userData[index].price} | ${userData[index].changePercent24Hr}",style: TextStyle(color: userData[index].isNegative?Colors.red:Colors.green),),
+                  title: Text("${data.symbol} - ${data.name}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
+                  subtitle: Text("\$ ${data.price} | ${data.changePercent24Hr}",style: TextStyle(color: userData[index].isNegative?Colors.red:Colors.green),),
                   onTap: () => {},
                 ),
               );

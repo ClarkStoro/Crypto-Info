@@ -14,12 +14,7 @@ class CoinRepositoryImpl implements CoinRepository{
   @override
   Future<List<CurrencyModel>> getCurrencies() {
     return api.fetchCurrency().then((response) {
-      List<Currency>? data = response.data;
-      List<CurrencyModel> resp = [];
-      if(data!=null){
-        resp = data.map((Currency e) => _mapper.map(e)).toList();
-      }
-      return resp;
+      return response.data?.map((Currency e) => _mapper.map(e)).toList() ?? [];
     });
   }
 }
