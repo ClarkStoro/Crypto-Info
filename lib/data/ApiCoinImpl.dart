@@ -6,7 +6,7 @@ class ApiCoinImpl implements ApiCoin {
 
   @override
   Future<CoinCapResponse> fetchCurrency() async {
-    final response = await http.get('https://api.coincap.io/v2/assets/');
+    final response = await http.get(Uri.parse('https://api.coincap.io/v2/assets/'));
 
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,

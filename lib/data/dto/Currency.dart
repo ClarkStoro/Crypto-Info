@@ -14,24 +14,24 @@ class Currency {
     this.maxSupply,
     this.marketCapUsd,
     this.volumeUsd24Hr,
-    this.price,
-    this.changePercent24Hr,
+    this.price = 0,
+    this.changePercent24Hr = 0,
     this.vwap24Hr,
     this.explorer,
   });
 
-  String id;
-  String rank;
-  String symbol;
-  String name;
-  String supply;
-  String maxSupply;
-  String marketCapUsd;
-  String volumeUsd24Hr;
-  double price;
-  double changePercent24Hr;
-  String vwap24Hr;
-  String explorer;
+  String? id;
+  String? rank;
+  String? symbol;
+  String? name;
+  String? supply;
+  String? maxSupply;
+  String? marketCapUsd;
+  String? volumeUsd24Hr;
+  double price = 0;
+  double changePercent24Hr = 0;
+  String? vwap24Hr;
+  String? explorer;
 
   factory Currency.fromJson(String str) => Currency.fromMap(json.decode(str));
 
