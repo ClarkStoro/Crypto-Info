@@ -1,3 +1,4 @@
+import 'package:crypto_info/presentation/CurrencyUi.dart';
 import 'package:crypto_info/ui/HomeViewModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'package:crypto_info/service_locator.dart';
 
 class Home extends StatefulWidget {
 
-  const Home({Key key, this.title}) : super(key: key);
+  const Home({Key? key, this.title=""}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -42,12 +43,13 @@ class _HomeState extends State<Home> {
         builder: (context, snapshot) {
           if (snapshot.hasError) return Center(child: Text("ERROR: ${snapshot.error}")); //throw snapshot.error;
           if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
-          var userData = snapshot.data;
+          List<CurrencyUi> userData = snapshot.data as List<CurrencyUi>;
           return userData.isEmpty ? Center(
               child: Text("NOPP")
           ) : ListView.builder(
             itemCount: userData.length,
             itemBuilder: (context, index) {
+              CurrencyUi data = userData[index];
               return Container(
                 margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                 decoration: BoxDecoration(
@@ -59,10 +61,11 @@ class _HomeState extends State<Home> {
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
-                      backgroundImage: NetworkImage("${userData[index].uriImg}")
+                      backgroundImage: NetworkImage("${userData[index].uriImg}"),
+                    backgroundColor: Colors.lightBlue[100],
                   ),
-                  title: Text("${userData[index].symbol} - ${userData[index].name}"),
-                  subtitle: Text("\$ ${userData[index].price} | ${userData[index].changePercent24Hr}"),
+                  title: Text("${data.symbol} - ${data.name}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
+                  subtitle: Text("\$ ${data.price} | ${data.changePercent24Hr}",style: TextStyle(color: userData[index].isNegative?Colors.red:Colors.green),),
                   onTap: () => {},
                 ),
               );
