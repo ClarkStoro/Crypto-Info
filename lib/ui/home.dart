@@ -59,10 +59,11 @@ class _HomeState extends State<Home> {
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
-                      backgroundImage: NetworkImage("${userData[index].uriImg}")
+                      backgroundImage: NetworkImage("${userData[index].uriImg}"),
+                    backgroundColor: Colors.lightBlue[100],
                   ),
-                  title: Text("${userData[index].symbol} - ${userData[index].name}"),
-                  subtitle: Text("\$ ${userData[index].price} | ${userData[index].changePercent24Hr}"),
+                  title: Text("${userData[index].symbol} - ${userData[index].name}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
+                  subtitle: Text("\$ ${userData[index].price} | ${userData[index].changePercent24Hr}",style: TextStyle(color: userData[index].isNegative?Colors.red:Colors.green),),
                   onTap: () => {},
                 ),
               );

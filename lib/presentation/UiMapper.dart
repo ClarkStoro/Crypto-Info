@@ -18,7 +18,8 @@ class UiMapper extends Mapper<CurrencyModel,CurrencyUi>{
         data.changePercent24Hr.toStringAsFixed(2)+"%",
         data.vwap24Hr,
         data.explorer,
-        data.uriImg
+        data.uriImg,
+        data.changePercent24Hr<0
     );
   }
 }

@@ -12,7 +12,8 @@ class CurrencyUi {
       this.changePercent24Hr,
       this.vwap24Hr,
       this.explorer,
-      this.uriImg);
+      this.uriImg,
+      this.isNegative);
 
   String id;
   String rank;
@@ -27,5 +28,6 @@ class CurrencyUi {
   String vwap24Hr;
   String explorer;
   String uriImg;
+  bool isNegative;
 
 }
