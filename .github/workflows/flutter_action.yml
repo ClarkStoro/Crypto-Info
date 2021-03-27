@@ -26,3 +26,9 @@ jobs:
     - run: flutter pub get
     #- run: flutter test
     - run: flutter build apk
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v1
+      with:
+        name: app
+        path: build/app/outputs/apk/debug/app-debug.apk
