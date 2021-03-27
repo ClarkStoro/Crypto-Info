@@ -27,9 +27,11 @@ jobs:
     #- run: flutter test
     - run: flutter build apk --debug
     
+    - run: mv build/app/outputs/flutter-apk/app-debug.apk build/app/outputs/flutter-apk/crypto-info_debug.apk
+    
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
         name: debug app
-        path: build/app/outputs/flutter-apk/app-debug.apk
+        path: build/app/outputs/flutter-apk/crypto-info_debug.apk
         
