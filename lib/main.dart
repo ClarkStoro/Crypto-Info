@@ -4,7 +4,7 @@ import 'service_locator.dart';
 
 
 void main() async {
-  await init();
+  init();
   runApp(CryptoInfo());
 }
 

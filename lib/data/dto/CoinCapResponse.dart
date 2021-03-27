@@ -9,10 +9,10 @@ import 'Currency.dart';
 class CoinCapResponse {
   CoinCapResponse({
     this.data,
-    this.timestamp,
+    this.timestamp = 0,
   });
 
-  List<Currency> data;
+  List<Currency>? data;
   int timestamp;
 
   factory CoinCapResponse.fromJson(String str) => CoinCapResponse.fromMap(json.decode(str));

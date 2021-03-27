@@ -1,6 +1,5 @@
 import 'package:crypto_info/domain/Mapper.dart';
 import 'package:crypto_info/model/CurrencyModel.dart';
-import 'package:crypto_info/model/ModelMapper.dart';
 import 'package:crypto_info/presentation/CurrencyUi.dart';
 
 class UiMapper extends Mapper<CurrencyModel,CurrencyUi>{
@@ -18,7 +17,8 @@ class UiMapper extends Mapper<CurrencyModel,CurrencyUi>{
         data.changePercent24Hr.toStringAsFixed(2)+"%",
         data.vwap24Hr,
         data.explorer,
-        data.uriImg
+        data.uriImg,
+        data.changePercent24Hr<0
     );
   }
 }

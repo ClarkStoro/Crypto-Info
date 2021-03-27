@@ -60,22 +60,24 @@ class HomePage extends StatelessWidget {
           itemCount: userData.length,
           itemBuilder: (context, index) {
             return Container(
-              margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-              decoration: BoxDecoration(
-                  color: Colors.lightBlue[100],
-                  border: Border.all(
-                    color: Colors.blue,
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(16))
-              ),
-              child: ListTile(
-                leading: CircleAvatar(
-                    backgroundImage: NetworkImage("${userData[index].uriImg}")
+                margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                decoration: BoxDecoration(
+                    color: Colors.lightBlue[100],
+                    border: Border.all(
+                      color: Colors.blue,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(16))
                 ),
-                title: Text("${userData[index].symbol} - ${userData[index].name}"),
-                subtitle: Text("\$ ${userData[index].price} | ${userData[index].changePercent24Hr}"),
-                onTap: () => {},
-              ),
+                child: ListTile(
+                  leading: CircleAvatar(
+                      backgroundImage: NetworkImage("${userData[index].uriImg}"),
+                    backgroundColor: Colors.lightBlue[100],
+                  ),
+                  title: Text("${data.symbol} - ${data.name}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
+                  subtitle: Text("\$ ${data.price} | ${data.changePercent24Hr}",style: TextStyle(color: userData[index].isNegative?Colors.red:Colors.green),),
+                  onTap: () => {},
+
+                ),
             );
           },
         ),

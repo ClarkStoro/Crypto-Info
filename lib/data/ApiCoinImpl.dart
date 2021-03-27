@@ -6,7 +6,7 @@ class ApiCoinImpl implements ApiCoin {
 
   @override
   Future<CoinCapResponse> fetchCurrency() async {
-    final response = await http.get('https://api.coincap.io/v2/assets/');
+    final response = await http.get(Uri.parse('https://api.coincap.io/v2/assets/'));
 
     //throw Exception('My test exception!');
 

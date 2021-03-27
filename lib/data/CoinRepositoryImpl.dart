@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:crypto_info/data/dto/Currency.dart';
 import 'package:crypto_info/domain/ApiCoin.dart';
 import 'package:crypto_info/domain/CoinRepository.dart';
 import 'package:crypto_info/model/CurrencyModel.dart';
@@ -13,10 +14,7 @@ class CoinRepositoryImpl implements CoinRepository{
   @override
   Future<List<CurrencyModel>> getCurrencies() {
     return api.fetchCurrency().then((response) {
-      var products = response.data
-          .map((e) => _mapper.map(e))
-          .toList();
-      return products;
+      return response.data?.map((Currency e) => _mapper.map(e)).toList() ?? [];
     });
   }
 }
