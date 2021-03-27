@@ -10,7 +10,9 @@ class HomeViewModel extends ChangeNotifier {
   HomeViewModel(this.getCurrenciesUseCase);
 
   bool _isLoading = true;
-  String error;
+  Exception _error;
+
+  String get error => _error.toString();
 
   final List<CurrencyUi> _items = [];
 
@@ -24,7 +26,7 @@ class HomeViewModel extends ChangeNotifier {
     getCurrenciesUseCase.execute().then((value) =>
         _items.addAll(value)
     ).catchError((e) {
-        error = e.toString();
+        _error = e;
     }).whenComplete(() {
       stopLoading();
     });
@@ -45,8 +47,12 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void clearError() {
+      _error = null;
+  }
+
 
   bool isLoading() => _isLoading;
 
-  bool hasErrors() => error != null && error.isNotEmpty;
+  bool hasErrors() => _error != null;
 }

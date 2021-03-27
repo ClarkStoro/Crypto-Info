@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
                   if (viewModel.isLoading()) {
                     return renderLoading();
                   } else if (viewModel.hasErrors()) {
-                      return renderError(viewModel.error);
+                      String strError = viewModel.error;
+                      viewModel.clearError();
+                      return renderError(strError);
                   } else {
                     return renderList(viewModel);
                   }
