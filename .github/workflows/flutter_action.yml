@@ -22,15 +22,14 @@ jobs:
         java-version: '12.x'
     - uses: subosito/flutter-action@v1
       with:
-        flutter-version: '2.0.3' # you can use 1.22
+        flutter-version: '2.0.3'
     - run: flutter pub get
     #- run: flutter test
-    - run: flutter build apk
+    - run: flutter build apk --debug
     
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
         name: debug app
-        path: build/app/outputs/flutter-apk/app.apk
-        if-no-files-found: warn
+        path: build/app/outputs/flutter-apk/app-debug.apk
         
