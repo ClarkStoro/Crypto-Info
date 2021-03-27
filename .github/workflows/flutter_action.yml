@@ -32,6 +32,6 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
-        name: debug app
+        name: Crypto Info Debug APK
         path: build/app/outputs/flutter-apk/crypto-info_debug.apk
         
