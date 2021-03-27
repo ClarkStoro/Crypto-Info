@@ -10,9 +10,9 @@ class HomeViewModel extends ChangeNotifier {
   HomeViewModel(this.getCurrenciesUseCase);
 
   bool _isLoading = true;
-  Exception _error;
+  Exception? _error;
 
-  String get error => _error.toString();
+  String get error => _error?.toString() ?? "";
 
   final List<CurrencyUi> _items = [];
 

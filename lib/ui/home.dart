@@ -59,6 +59,7 @@ class HomePage extends StatelessWidget {
           child: ListView.builder(
           itemCount: userData.length,
           itemBuilder: (context, index) {
+            CurrencyUi dataItem = userData[index];
             return Container(
                 margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                 decoration: BoxDecoration(
@@ -70,11 +71,11 @@ class HomePage extends StatelessWidget {
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
-                      backgroundImage: NetworkImage("${userData[index].uriImg}"),
+                      backgroundImage: NetworkImage("${dataItem.uriImg}"),
                     backgroundColor: Colors.lightBlue[100],
                   ),
-                  title: Text("${data.symbol} - ${data.name}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
-                  subtitle: Text("\$ ${data.price} | ${data.changePercent24Hr}",style: TextStyle(color: userData[index].isNegative?Colors.red:Colors.green),),
+                  title: Text("${dataItem.symbol} - ${dataItem.name}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
+                  subtitle: Text("\$ ${dataItem.price} | ${dataItem.changePercent24Hr}",style: TextStyle(color: userData[index].isNegative?Colors.red:Colors.green),),
                   onTap: () => {},
 
                 ),
