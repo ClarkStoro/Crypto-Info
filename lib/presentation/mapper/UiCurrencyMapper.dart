@@ -2,7 +2,7 @@ import 'package:crypto_info/domain/Mapper.dart';
 import 'package:crypto_info/model/CurrencyModel.dart';
 import 'package:crypto_info/presentation/CurrencyUi.dart';
 
-class UiMapper extends Mapper<CurrencyModel,CurrencyUi>{
+class UiCurrencyMapper extends Mapper<CurrencyModel,CurrencyUi>{
   @override
   CurrencyUi map(CurrencyModel data) {
     return new CurrencyUi(data.id,

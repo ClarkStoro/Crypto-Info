@@ -1,10 +1,10 @@
 import 'package:crypto_info/domain/CoinRepository.dart';
 import 'package:crypto_info/presentation/CurrencyUi.dart';
-import 'package:crypto_info/presentation/UiMapper.dart';
+import 'package:crypto_info/presentation/mapper/UiCurrencyMapper.dart';
 
 class GetCurrenciesUseCase{
 
-  UiMapper mapper = new UiMapper();
+  UiCurrencyMapper mapper = new UiCurrencyMapper();
   final CoinRepository repo;
 
   GetCurrenciesUseCase(this.repo);

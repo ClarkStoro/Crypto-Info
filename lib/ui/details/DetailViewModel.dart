@@ -1,29 +1,31 @@
 import 'dart:collection';
-import 'package:crypto_info/domain/useCase/GetCurrenciesUseCase.dart';
-import 'package:crypto_info/presentation/CurrencyUi.dart';
+
+import 'package:crypto_info/domain/useCase/GetHistoryUseCase.dart';
+import 'package:crypto_info/presentation/HistoryUi.dart';
 import 'package:flutter/foundation.dart';
 
-class HomeViewModel extends ChangeNotifier {
-  final GetCurrenciesUseCase getCurrenciesUseCase;
+class DetailViewModel extends ChangeNotifier {
+  final GetHistoryUseCase _getHistoryUseCase;
 
-  HomeViewModel(this.getCurrenciesUseCase);
+  DetailViewModel(this._getHistoryUseCase);
 
   bool _isLoading = true;
   Exception? _error;
 
   String get error => _error?.toString() ?? "";
 
-  final List<CurrencyUi> _items = [];
+  List<HistoryUi> _items = [];
 
   /// An unmodifiable view of the items
-  UnmodifiableListView<CurrencyUi> get items => UnmodifiableListView(_items);
+  UnmodifiableListView<HistoryUi> get items => UnmodifiableListView(_items);
 
 
-  void getCurrencies() {
+  void getHistory(String id) {
     _items.clear();
     startLoading();
-    getCurrenciesUseCase.execute().then((value) =>
-        _items.addAll(value)
+    _getHistoryUseCase.execute(id).then((value){
+        value.forEach((element) {print("price ${element.priceUsd} ==> ${element.time}");});
+        _items = value; }
     ).catchError((e) {
         _error = e;
     }).whenComplete(() {
@@ -32,8 +34,8 @@ class HomeViewModel extends ChangeNotifier {
   }
 
 
-  void refresh() {
-    getCurrencies();
+  void refresh(String id) {
+    getHistory(id);
   }
 
   void startLoading() {

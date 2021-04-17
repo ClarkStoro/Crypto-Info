@@ -26,7 +26,7 @@ class ApiCoinImpl implements ApiCoin {
   }
 
   @override
-  Future<HistoryResponse> fetchHistory(int id, String interval, int? start, int? end) async {
+  Future<HistoryResponse> fetchHistory(String id, String interval, int? start, int? end) async {
     final response = await http.get(Uri.parse(_BASE_URL+"/$id/history?interval=$interval"));
 
     if (response.statusCode == 200) {

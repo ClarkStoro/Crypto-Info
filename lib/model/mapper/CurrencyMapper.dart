@@ -5,7 +5,7 @@ import 'package:crypto_info/model/CurrencyModel.dart';
 
 
 
-class ModelMapper implements Mapper<CurrencyDto,CurrencyModel>{
+class CurrencyMapper implements Mapper<CurrencyDto,CurrencyModel>{
 
   @override
   CurrencyModel map(CurrencyDto data) {
