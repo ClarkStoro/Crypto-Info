@@ -1,14 +1,14 @@
 
-import 'package:crypto_info/data/dto/Currency.dart';
+import 'package:crypto_info/data/dto/CurrencyResponse.dart';
 import 'package:crypto_info/domain/Mapper.dart';
 import 'package:crypto_info/model/CurrencyModel.dart';
 
 
 
-class ModelMapper implements Mapper<Currency,CurrencyModel>{
+class CurrencyMapper implements Mapper<CurrencyDto,CurrencyModel>{
 
   @override
-  CurrencyModel map(Currency data) {
+  CurrencyModel map(CurrencyDto data) {
     return new CurrencyModel(
       data.id??"",
       data.rank??"",

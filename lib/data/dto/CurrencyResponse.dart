@@ -4,8 +4,27 @@
 
 import 'dart:convert';
 
-class Currency {
-  Currency({
+
+class CurrencyResponse {
+  CurrencyResponse({
+    this.data,
+    this.timestamp = 0,
+  });
+
+  List<CurrencyDto>? data;
+  int timestamp;
+
+  factory CurrencyResponse.fromJson(String str) => CurrencyResponse.fromMap(json.decode(str));
+
+  factory CurrencyResponse.fromMap(Map<String, dynamic> jsonMap) => CurrencyResponse(
+    data: List<CurrencyDto>.from(jsonMap["data"].map((x) => CurrencyDto.fromMap(x))),
+    timestamp: jsonMap["timestamp"],
+  );
+
+}
+
+class CurrencyDto {
+  CurrencyDto({
     this.id,
     this.rank,
     this.symbol,
@@ -33,11 +52,11 @@ class Currency {
   String? vwap24Hr;
   String? explorer;
 
-  factory Currency.fromJson(String str) => Currency.fromMap(json.decode(str));
+  factory CurrencyDto.fromJson(String str) => CurrencyDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Currency.fromMap(Map<String, dynamic> json) => Currency(
+  factory CurrencyDto.fromMap(Map<String, dynamic> json) => CurrencyDto(
     id: json["id"],
     rank: json["rank"],
     symbol: json["symbol"],
