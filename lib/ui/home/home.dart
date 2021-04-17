@@ -1,5 +1,5 @@
 import 'package:crypto_info/presentation/CurrencyUi.dart';
-import 'package:crypto_info/ui/HomeViewModel.dart';
+import 'package:crypto_info/ui/home/HomeViewModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_info/service_locator.dart';
@@ -76,8 +76,14 @@ class HomePage extends StatelessWidget {
                   ),
                   title: Text("${dataItem.symbol} - ${dataItem.name}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
                   subtitle: Text("\$ ${dataItem.price} | ${dataItem.changePercent24Hr}",style: TextStyle(color: userData[index].isNegative?Colors.red:Colors.green),),
-                  onTap: () => {},
-
+                  onTap: () => {
+                    //navigate to details of the selected crypto
+                    Navigator.pushNamed(
+                      context,
+                      '/details',
+                      arguments: dataItem
+                    )
+                  },
                 ),
             );
           },
