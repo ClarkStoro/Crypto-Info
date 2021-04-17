@@ -1,4 +1,5 @@
-import 'package:crypto_info/ui/home.dart';
+import 'package:crypto_info/ui/details/details.dart';
+import 'package:crypto_info/ui/home/home.dart';
 import 'package:flutter/material.dart';
 import 'service_locator.dart';
 
@@ -19,7 +20,10 @@ class CryptoInfo extends StatelessWidget {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      routes: {
+        '/': (context) => HomePage(),
+        '/details': (context) => DetailsPage(),
+      },
     );
   }
 }

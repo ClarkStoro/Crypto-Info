@@ -2,7 +2,7 @@ import 'package:crypto_info/data/ApiCoinImpl.dart';
 import 'package:crypto_info/data/CoinRepositoryImpl.dart';
 import 'package:crypto_info/domain/CoinRepository.dart';
 import 'package:crypto_info/domain/GetCurrenciesUseCase.dart';
-import 'package:crypto_info/ui/HomeViewModel.dart';
+import 'package:crypto_info/ui/home/HomeViewModel.dart';
 import 'package:get_it/get_it.dart';
 import 'domain/ApiCoin.dart';
 
