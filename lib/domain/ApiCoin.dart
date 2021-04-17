@@ -1,5 +1,8 @@
-import 'package:crypto_info/data/dto/CoinCapResponse.dart';
+import 'package:crypto_info/data/dto/CurrencyResponse.dart';
+import 'package:crypto_info/data/dto/HistoryResponse.dart';
 
 abstract class ApiCoin {
-  Future<CoinCapResponse> fetchCurrency();
+  Future<CurrencyResponse> fetchCurrency();
+
+  Future<HistoryResponse> fetchHistory(int id, String interval, int? start, int? end);
 }
