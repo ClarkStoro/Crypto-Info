@@ -19,20 +19,20 @@ class DetailViewModel extends ChangeNotifier {
   /// An unmodifiable view of the items
   UnmodifiableListView<HistoryUi> get items => UnmodifiableListView(_items);
 
-
   void getHistory(String id) {
     _items.clear();
     startLoading();
-    _getHistoryUseCase.execute(id).then((value){
-        value.forEach((element) {print("price ${element.priceUsd} ==> ${element.time}");});
-        _items = value; }
-    ).catchError((e) {
-        _error = e;
+    _getHistoryUseCase.execute(id).then((value) {
+      value.forEach((element) {
+        print("price ${element.priceUsd} ==> ${element.time}");
+      });
+      _items = value;
+    }).catchError((e) {
+      _error = e;
     }).whenComplete(() {
       stopLoading();
     });
   }
-
 
   void refresh(String id) {
     getHistory(id);
@@ -49,9 +49,8 @@ class DetailViewModel extends ChangeNotifier {
   }
 
   void clearError() {
-      _error = null;
+    _error = null;
   }
-
 
   bool isLoading() => _isLoading;
 
